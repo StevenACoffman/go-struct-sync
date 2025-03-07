@@ -2,7 +2,7 @@ package change
 
 import (
 	"fmt"
-	"github.com/sphere-sh/go-struct-sync-v1/compare"
+	"github.com/sphere-sh/go-struct-sync/compare"
 	"reflect"
 )
 

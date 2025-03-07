@@ -23,7 +23,7 @@ package main
 
 import (
     "fmt"
-    "github.com/sphere-sh/go-struct-sync-v1"
+    "github.com/sphere-sh/go-struct-sync"
 )
 
 func main() {
