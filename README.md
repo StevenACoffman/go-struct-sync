@@ -4,7 +4,7 @@ A Go package for comparing struct instances and applying detected changes.
 
 ### Installation
 ```bash
-go get github.com/sphere-sh/go-struct-sync
+go get github.com/sphere-sh/go-struct-sync@<version>
 ````
 
 ## Overview
