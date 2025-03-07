@@ -23,7 +23,7 @@ package main
 
 import (
     "fmt"
-    "github.com/sphere-sh/go-struct-sync"
+    "github.com/sphere-sh/go-struct-sync/compare"
 )
 
 func main() {
@@ -51,22 +51,26 @@ func main() {
     }
 
     // Compare the structs
-    changes, err := comparing_structs_for_changes.CompareStructs(old, new)
+    changes, err := compare.CompareStructs(old, new)
     if err != nil {
         fmt.Printf("Error: %v\n", err)
         return
     }
 
     // Print the changes
-    fmt.Println(comparing_structs_for_changes.FormatChanges(changes))
+    fmt.Println(compare.FormatChanges(changes))
 }
 ```
 
 ### Applying Changes
 
 ```go
+import (
+"github.com/sphere-sh/go-struct-sync/change"
+)
+
 // Apply changes to the original struct
-result, err := comparing_structs_for_changes.ApplyChanges(old, changes)
+result, err := change.ApplyChanges(old, changes)
 if err != nil {
     fmt.Printf("Error applying changes: %v\n", err)
     return
@@ -80,15 +84,19 @@ fmt.Printf("Modified person: %+v\n", modifiedPerson)
 ### Filtering Changes
 
 ```go
+import (
+"github.com/sphere-sh/go-struct-sync/compare"
+)
+
 // Get only modified fields
-modifiedChanges := comparing_structs_for_changes.FilterChanges(
+modifiedChanges := compare.FilterChanges(
     changes, 
-    []comparing_structs_for_changes.ChangeType{comparing_structs_for_changes.Modified}, 
+    []change.ChangeType{change.Modified}, 
     nil,
 )
 
 // Get only changes to specific fields
-addressChanges := comparing_structs_for_changes.FilterChanges(
+addressChanges := compare.FilterChanges(
     changes, 
     nil, 
     []string{"Address"},
@@ -98,8 +106,12 @@ addressChanges := comparing_structs_for_changes.FilterChanges(
 ### Working with Change Maps
 
 ```go
+import (
+"github.com/sphere-sh/go-struct-sync/compare"
+)
+
 // Convert changes to map for efficient lookup
-changeMap := comparing_structs_for_changes.ChangesToMap(changes)
+changeMap := compare.ChangesToMap(changes)
 
 // Get change for specific field
 addressChange, exists := changeMap["Address"]
