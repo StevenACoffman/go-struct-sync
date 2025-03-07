@@ -1,4 +1,4 @@
-module github.com/sphere-sh/go-struct-sync-v1
+module github.com/sphere-sh/go-struct-sync
 
 go 1.23
 
