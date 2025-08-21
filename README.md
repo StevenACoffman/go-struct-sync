@@ -59,6 +59,11 @@ func main() {
 
     // Print the changes
     fmt.Println(compare.FormatChanges(changes))
+	// Output:
+	//
+	// Modified Active: true → false
+	// Modified Address: 123 Main St → 456 Oak Ave
+	// Modified Age: 30 → 31
 }
 ```
 
@@ -78,7 +83,11 @@ if err != nil {
 
 // Cast to the correct type
 modifiedPerson := result.(Person)
+// Modified person: {Name:John Doe Age:31 Address:456 Oak Ave Active:false}
 fmt.Printf("Modified person: %+v\n", modifiedPerson)
+// Modified Address: 123 Main St → 456 Oak Ave
+// Modified Age: 30 → 31
+// Modified Active: true → false
 ```
 
 ### Filtering Changes
@@ -101,6 +110,7 @@ addressChanges := compare.FilterChanges(
     nil, 
     []string{"Address"},
 )
+fmt.Printf("Address changes: %+v\n", addressChanges)
 ```
 
 ### Working with Change Maps
@@ -118,6 +128,8 @@ addressChange, exists := changeMap["Address"]
 if exists {
     fmt.Printf("Address changed from %v to %v\n", addressChange.OldValue, addressChange.NewValue)
 }
+// Output:
+// Address changed from 123 Main St to 456 Oak Ave
 ```
 
 ## API Reference
